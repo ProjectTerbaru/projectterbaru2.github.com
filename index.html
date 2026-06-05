@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI SAYANGKU! ❤️</title>
+    <!-- Memanggil file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Tag Audio (File musik disiapkan di sini) -->
+    <!-- Ganti "musik.mp3" dengan nama file lagumu -->
+    <audio id="bg-music" src="musik.mp3" loop></audio>
+
+    <!-- Animasi Hati Berjatuhan -->
+    <div class="hearts" id="hearts-container"></div>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <header>
+            <h1>HAIII CINTAKU SAYANGKU! 🎉❤️</h1>
+            <p class="subtitle">"HEHEHE AKU BIKIN INI BUAT KAMU SAYANG, SEMOGA KAMU SUKA YA SAYANG."</p>
+        </header>
+
+        <!-- Galeri 5 Foto -->
+        <main class="gallery">
+            <div class="photo-card">
+                <img src="kita1.jpg" alt="Foto Pacar 1">
+            </div>
+            <div class="photo-card">
+                <img src="kita 2.jpg" alt="Foto Pacar 2">
+            </div>
+            <div class="photo-card">
+                <img src="kita 3.jpg" alt="Foto Pacar 3">
+            </div>
+            <div class="photo-card">
+                <img src="kita 4.jpg" alt="Foto Pacar 4">
+            </div>
+            <div class="photo-card">
+                <img src="kita 5.jpg" alt="Foto Pacar 5">
+            </div>
+        </main>
+
+        <!-- Pesan/Doa -->
+        <footer class="wishes">
+            <h3>Teruntuk Kamu,SAYANGG</h3>
+            <p>hehee aku mau bilang makasi ya sayang, kamu perempuanku yang cantii banget, hebat, lucuuu, dan imuttt lagii.
+                MAAF yaa sayangg kadangg bikin kamu capee sama akuu, maaf yaa cintaa, ini aku bikin sebagai permintaan maaf aku sama cintaa,
+                AKUU SAYANGG BANGETT SAMA KAMU SAYANGGG DAN CINTA JUGA SAMPAI KAPAN ! 💖</p>
+        </footer>
+    </div>
+
+    <!-- Script untuk animasi hati & Autoplay Audio -->
+    <script>
+        // 1. Logika untuk Animasi Hati
+        const container = document.getElementById('hearts-container');
+        const heartCount = 20;
+
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            const size = Math.random() * 15 + 10 + 'px';
+            heart.style.width = size;
+            heart.style.height = size;
+            container.appendChild(heart);
+
+        }
+
+        // 2. Logika Cerdas Autoplay Audio setelah Interaksi
+        const music = document.getElementById('bg-music');
+        
+        // Fungsi untuk menyalakan musik
+        function playAudio() {
+            music.play().then(() => {
+                // Jika sukses berputar, hapus event listener agar tidak ke-trigger berkali-kali
+                document.removeEventListener('click', playAudio);
+                document.removeEventListener('touchstart', playAudio);
+            }).catch(error => {
+                console.log("Autoplay diblokir oleh browser, menunggu interaksi pengguna.");
+            });
+        }
+
+        // Dengarkan ketukan atau klik dari pacar kamu di layar
+        document.addEventListener('click', playAudio);
+        document.addEventListener('touchstart', playAudio); // Untuk HP / Touchscreen
+    </script>
+</body>
+</html>
